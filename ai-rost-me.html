@@ -9,13 +9,13 @@
     <meta property="og:title" content="AI Roast Me - Light Roast Edition">
     <meta property="og:description" content="Upload your selfie for a playful AI-generated roast">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://airoastme.com/ai-roast-me.html">
+    <meta property="og:url" content="https://airoastme.com">
     <meta property="og:image" content="https://airoastme.com/images/og-image.jpg">
     <title>AI Roast Me - Light Roast Edition | Playful AI Roasts</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9546002208255150" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
     <style>
         :root {
             --primary: #FF6B6B;
@@ -313,10 +313,11 @@
             <div class="ad-container">
                 <div>
                     <div class="ad-label">Advertisement</div>
+                    <!-- Replace with your AdSense code -->
                     <ins class="adsbygoogle"
                          style="display:block"
-                         data-ad-client="ca-pub-9546002208255150"
-                         data-ad-slot="8803732833"
+                         data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
                          data-ad-format="auto"
                          data-full-width-responsive="true"></ins>
                     <script>
@@ -332,4 +333,209 @@
                         <div class="upload-icon">📷</div>
                         <p class="upload-text">Click or drag & drop your photo here</p>
                         <p class="upload-hint">We promise we'll be nice... mostly</p>
-                        <input type="file" id="fileInput"
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                    <img id="imagePreview" alt="Your uploaded image">
+                    <div class="action-buttons">
+                        <button id="roastBtn" class="btn" disabled>Roast Me!</button>
+                        <button id="clearBtn" class="btn btn-secondary" disabled>Try Another</button>
+                    </div>
+                </section>
+
+                <!-- Middle Ad Banner -->
+                <div class="ad-container">
+                    <div>
+                        <div class="ad-label">Advertisement</div>
+                        <!-- Replace with your AdSense code -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                             data-ad-slot="YOUR_AD_SLOT_ID"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+
+                <section class="result-section">
+                    <h2 class="section-title">Your AI Roast</h2>
+                    <div class="loading" id="loadingIndicator">
+                        <div class="spinner"></div>
+                        <p>AI is carefully crafting your roast...</p>
+                    </div>
+                    <div class="roast-result" id="roastResult"></div>
+                </section>
+            </div>
+
+            <!-- Bottom Ad Banner -->
+            <div class="ad-container">
+                <div>
+                    <div class="ad-label">Advertisement</div>
+                    <!-- Replace with your AdSense code -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 AI Roast Me - Light Roast Edition. All roasts are AI-generated and meant for entertainment only.</p>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const imagePreview = document.getElementById('imagePreview');
+            const roastBtn = document.getElementById('roastBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const roastResult = document.getElementById('roastResult');
+
+            // Sample roast messages (in a real app, these would come from an AI API)
+            const roastMessages = [
+                "I see you've chosen the 'just woke up' look today. Bold choice!",
+                "Your smile says 'cheese', but your eyes say 'please release me'.",
+                "If this photo was any more basic, it would come with pumpkin spice.",
+                "That's a great angle! It really captures all the hopes and dreams you've given up on.",
+                "You look like the human version of a 'live, laugh, love' wall decal.",
+                "Your selfie game is strong... said no one ever.",
+                "That's a face that says 'I didn't agree to this roast'.",
+                "You look like you just remembered all your embarrassing childhood moments at once.",
+                "Is that your good side? Let's hope the other side is better.",
+                "You have the kind of face that makes people believe in aliens - in a good way!",
+                "Your photo says 'model', but your expression says 'I need coffee'.",
+                "That's the face of someone who still tries to use the same password from 2012.",
+                "You look like you were promised this would be quick and painless.",
+                "I'd make a joke about your face, but nature already did.",
+                "You're not ugly, you're just... not photogenic. At all."
+            ];
+
+            // Event listeners
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        imagePreview.src = event.target.result;
+                        imagePreview.style.display = 'block';
+                        roastBtn.disabled = false;
+                        clearBtn.disabled = false;
+                        
+                        // Update upload area text
+                        document.querySelector('.upload-text').textContent = 'Great choice! Ready for your roast?';
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.backgroundColor = 'rgba(78, 205, 196, 0.2)';
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.backgroundColor = '';
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.backgroundColor = '';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    const event = new Event('change');
+                    fileInput.dispatchEvent(event);
+                }
+            });
+
+            // Roast button click handler
+            roastBtn.addEventListener('click', function() {
+                // Show loading indicator
+                loadingIndicator.style.display = 'block';
+                roastResult.style.display = 'none';
+                
+                // Simulate API call delay
+                setTimeout(() => {
+                    loadingIndicator.style.display = 'none';
+                    
+                    // Get a random roast message
+                    const randomRoast = roastMessages[Math.floor(Math.random() * roastMessages.length)];
+                    roastResult.textContent = randomRoast;
+                    roastResult.style.display = 'block';
+                    
+                    // Scroll to result
+                    roastResult.scrollIntoView({ behavior: 'smooth' });
+                }, 2000);
+            });
+
+            // Clear button click handler
+            clearBtn.addEventListener('click', function() {
+                fileInput.value = '';
+                imagePreview.src = '';
+                imagePreview.style.display = 'none';
+                roastBtn.disabled = true;
+                clearBtn.disabled = true;
+                roastResult.style.display = 'none';
+                roastResult.textContent = '';
+                document.querySelector('.upload-text').textContent = 'Click or drag & drop your photo here';
+            });
+
+            // Initialize AdSense (make sure to replace with your actual AdSense ID)
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        });
+
+        // Service worker registration for PWA (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "AI Roast Me - Light Roast Edition",
+        "url": "https://airoastme.com",
+        "description": "Upload your selfie for a playful, AI-generated roast. All in good fun with our Light Roast Edition.",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</body>
+</html>
