@@ -15,7 +15,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9546002208255150" crossorigin="anonymous"></script>
     <style>
         :root {
             --primary: #FF6B6B;
@@ -62,7 +61,7 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            padding: 40px 0;
+            padding: 60px 0 40px;
         }
 
         h1 {
@@ -143,6 +142,24 @@
         .hero {
             text-align: center;
             padding: 80px 0 60px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80') center/cover no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero-image {
@@ -451,27 +468,6 @@
             font-size: 0.9rem;
         }
 
-        /* Ad Container */
-        .ad-container {
-            background-color: white;
-            padding: 20px;
-            margin: 40px 0;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ad-label {
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
         /* Responsive Styles */
         @media (max-width: 992px) {
             h1 {
@@ -570,31 +566,15 @@
     </header>
 
     <main>
-        <!-- Top Ad Banner -->
-        <div class="container">
-            <div class="ad-container">
-                <div>
-                    <div class="ad-label">Advertisement</div>
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-9546002208255150"
-                         data-ad-slot="8803732833"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-            </div>
-        </div>
-
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Person laughing at phone" class="hero-image">
-                <h2>Lighthearted Fun with AI</h2>
-                <p>Our AI analyzes your photo to deliver a playful roast that's funny without being mean. Perfect for sharing with friends!</p>
-                <a href="ai-roast-me.html" class="btn btn-secondary" style="margin-top: 30px;">Get Your Roast</a>
+                <div class="hero-content">
+                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Person laughing at phone" class="hero-image">
+                    <h2>Lighthearted Fun with AI</h2>
+                    <p>Our AI analyzes your photo to deliver a playful roast that's funny without being mean. Perfect for sharing with friends!</p>
+                    <a href="ai-roast-me.html" class="btn btn-secondary" style="margin-top: 30px;">Get Your Roast</a>
+                </div>
             </div>
         </section>
 
@@ -621,24 +601,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Middle Ad Banner -->
-        <div class="container">
-            <div class="ad-container">
-                <div>
-                    <div class="ad-label">Advertisement</div>
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-9546002208255150"
-                         data-ad-slot="5336095269"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-            </div>
-        </div>
 
         <!-- Testimonials Section -->
         <section class="testimonials" id="testimonials">
@@ -690,24 +652,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Bottom Ad Banner -->
-        <div class="container">
-            <div class="ad-container">
-                <div>
-                    <div class="ad-label">Advertisement</div>
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-9546002208255150"
-                         data-ad-slot="6828306188"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-            </div>
-        </div>
     </main>
 
     <footer id="about">
@@ -749,9 +693,6 @@
     </footer>
 
     <script>
-        // Initialize AdSense
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
