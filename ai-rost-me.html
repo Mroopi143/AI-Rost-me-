@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get playfully roasted by AI! Upload your selfie for a lighthearted, fun roast. All in good fun with our Light Roast Edition.">
+    <meta name="keywords" content="AI roast, funny roast, light roast, selfie roast, playful AI, humor generator">
+    <meta name="author" content="AI Roast Me">
+    <meta property="og:title" content="AI Roast Me - Light Roast Edition">
+    <meta property="og:description" content="Upload your selfie for a playful AI-generated roast">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://airoastme.com">
+    <meta property="og:image" content="https://airoastme.com/images/og-image.jpg">
+    <title>AI Roast Me - Light Roast Edition | Playful AI Roasts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --dark: #292F36;
+            --light: #F7FFF7;
+            --accent: #FFE66D;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .ad-container {
+            background-color: white;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .upload-section, .result-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .upload-area {
+            border: 3px dashed var(--secondary);
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .upload-area:hover {
+            background-color: rgba(78, 205, 196, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        #imagePreview {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            margin: 20px auto;
+            display: none;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #3dbeb6;
+            box-shadow: 0 6px 12px rgba(78, 205, 196, 0.3);
+        }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .roast-result {
+            font-family: 'Comic Neue', cursive;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            padding: 20px;
+            background-color: #FFF9C4;
+            border-left: 5px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 15px;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .upload-section, .result-section {
+                padding: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .upload-text {
+                font-size: 1rem;
+            }
+            
+            .roast-result {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AI Roast Me</h1>
+            <p class="subtitle">Light Roast Edition - All in good fun!</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Top Ad Banner -->
+            <div class="ad-container">
+                <div>
+                    <div class="ad-label">Advertisement</div>
+                    <!-- Replace with your AdSense code -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <div class="app-container">
+                <section class="upload-section">
+                    <h2 class="section-title">Upload Your Selfie</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📷</div>
+                        <p class="upload-text">Click or drag & drop your photo here</p>
+                        <p class="upload-hint">We promise we'll be nice... mostly</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                    <img id="imagePreview" alt="Your uploaded image">
+                    <div class="action-buttons">
+                        <button id="roastBtn" class="btn" disabled>Roast Me!</button>
+                        <button id="clearBtn" class="btn btn-secondary" disabled>Try Another</button>
+                    </div>
+                </section>
+
+                <!-- Middle Ad Banner -->
+                <div class="ad-container">
+                    <div>
+                        <div class="ad-label">Advertisement</div>
+                        <!-- Replace with your AdSense code -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                             data-ad-slot="YOUR_AD_SLOT_ID"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+
+                <section class="result-section">
+                    <h2 class="section-title">Your AI Roast</h2>
+                    <div class="loading" id="loadingIndicator">
+                        <div class="spinner"></div>
+                        <p>AI is carefully crafting your roast...</p>
+                    </div>
+                    <div class="roast-result" id="roastResult"></div>
+                </section>
+            </div>
+
+            <!-- Bottom Ad Banner -->
+            <div class="ad-container">
+                <div>
+                    <div class="ad-label">Advertisement</div>
+                    <!-- Replace with your AdSense code -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 AI Roast Me - Light Roast Edition. All roasts are AI-generated and meant for entertainment only.</p>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const imagePreview = document.getElementById('imagePreview');
+            const roastBtn = document.getElementById('roastBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const roastResult = document.getElementById('roastResult');
+
+            // Sample roast messages (in a real app, these would come from an AI API)
+            const roastMessages = [
+                "I see you've chosen the 'just woke up' look today. Bold choice!",
+                "Your smile says 'cheese', but your eyes say 'please release me'.",
+                "If this photo was any more basic, it would come with pumpkin spice.",
+                "That's a great angle! It really captures all the hopes and dreams you've given up on.",
+                "You look like the human version of a 'live, laugh, love' wall decal.",
+                "Your selfie game is strong... said no one ever.",
+                "That's a face that says 'I didn't agree to this roast'.",
+                "You look like you just remembered all your embarrassing childhood moments at once.",
+                "Is that your good side? Let's hope the other side is better.",
+                "You have the kind of face that makes people believe in aliens - in a good way!",
+                "Your photo says 'model', but your expression says 'I need coffee'.",
+                "That's the face of someone who still tries to use the same password from 2012.",
+                "You look like you were promised this would be quick and painless.",
+                "I'd make a joke about your face, but nature already did.",
+                "You're not ugly, you're just... not photogenic. At all."
+            ];
+
+            // Event listeners
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        imagePreview.src = event.target.result;
+                        imagePreview.style.display = 'block';
+                        roastBtn.disabled = false;
+                        clearBtn.disabled = false;
+                        
+                        // Update upload area text
+                        document.querySelector('.upload-text').textContent = 'Great choice! Ready for your roast?';
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.backgroundColor = 'rgba(78, 205, 196, 0.2)';
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.backgroundColor = '';
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.backgroundColor = '';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    const event = new Event('change');
+                    fileInput.dispatchEvent(event);
+                }
+            });
+
+            // Roast button click handler
+            roastBtn.addEventListener('click', function() {
+                // Show loading indicator
+                loadingIndicator.style.display = 'block';
+                roastResult.style.display = 'none';
+                
+                // Simulate API call delay
+                setTimeout(() => {
+                    loadingIndicator.style.display = 'none';
+                    
+                    // Get a random roast message
+                    const randomRoast = roastMessages[Math.floor(Math.random() * roastMessages.length)];
+                    roastResult.textContent = randomRoast;
+                    roastResult.style.display = 'block';
+                    
+                    // Scroll to result
+                    roastResult.scrollIntoView({ behavior: 'smooth' });
+                }, 2000);
+            });
+
+            // Clear button click handler
+            clearBtn.addEventListener('click', function() {
+                fileInput.value = '';
+                imagePreview.src = '';
+                imagePreview.style.display = 'none';
+                roastBtn.disabled = true;
+                clearBtn.disabled = true;
+                roastResult.style.display = 'none';
+                roastResult.textContent = '';
+                document.querySelector('.upload-text').textContent = 'Click or drag & drop your photo here';
+            });
+
+            // Initialize AdSense (make sure to replace with your actual AdSense ID)
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        });
+
+        // Service worker registration for PWA (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "AI Roast Me - Light Roast Edition",
+        "url": "https://airoastme.com",
+        "description": "Upload your selfie for a playful, AI-generated roast. All in good fun with our Light Roast Edition.",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</body>
+</html>
